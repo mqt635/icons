@@ -1,4 +1,6 @@
 ---
+aliases:
+  - /font/
 ---
 
 ## Install
@@ -8,11 +10,14 @@ Bootstrap Icons are published to npm, but they can also be manually downloaded i
 <div class="row my-4">
   <div class="col-md-4">
 {{< md >}}
-### npm
-Install [Bootstrap Icons](https://www.npmjs.com/package/bootstrap-icons)—including SVGs, icon sprite, and icon fonts—with npm. Then, choose how you'd like to include the icons with the [usage instructions](#usage).
+### Package manager
+Install [Bootstrap Icons](https://www.npmjs.com/package/bootstrap-icons)—including SVGs, icon sprite, and icon fonts—with npm or Composer. Then, choose how you'd like to include the icons with the [usage instructions](#usage).
 
 {{< highlight sh >}}
 npm i bootstrap-icons
+{{< /highlight >}}
+{{< highlight sh >}}
+composer require twbs/bootstrap-icons
 {{< /highlight >}}
 {{< /md >}}
   </div>
@@ -27,14 +32,14 @@ npm i bootstrap-icons
   <div class="col-md-4">
 {{< md >}}
 ### CDN
-Include the icon fonts stylesheet—in your website `<head>` or via `@import` in CSS—from our CDN and get started in seconds. [See icon font docs](#icon-font) for examples.
+Include the icon fonts stylesheet—in your website `<head>` or via `@import` in CSS—from jsDelivr and get started in seconds. [See icon font docs](#icon-font) for examples.
 
 {{< highlight html >}}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@{{< param version >}}/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@{{< param version >}}/font/bootstrap-icons.min.css">
 {{< /highlight >}}
 
 {{< highlight css >}}
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@{{< param version >}}/font/bootstrap-icons.css");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@{{< param version >}}/font/bootstrap-icons.min.css");
 {{< /highlight >}}
 {{< /md >}}
   </div>
@@ -52,7 +57,7 @@ Embed your icons within the HTML of your page (as opposed to an external image f
 {{< /md >}}
   </div>
   <div class="col-md-8">
-    {{< example >}}<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>{{< /example >}}
+    {{< example >}}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-heart-eyes" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M11.315 10.014a.5.5 0 0 1 .548.736A4.498 4.498 0 0 1 7.965 13a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .548-.736h.005l.017.005.067.015.252.055c.215.046.515.108.857.169.693.124 1.522.242 2.152.242.63 0 1.46-.118 2.152-.242a26.58 26.58 0 0 0 1.109-.224l.067-.015.017-.004.005-.002zM4.756 4.566c.763-1.424 4.02-.12.952 3.434-4.496-1.596-2.35-4.298-.952-3.434zm6.488 0c1.398-.864 3.544 1.838-.952 3.434-3.067-3.554.19-4.858.952-3.434z"/></svg>{{< /example >}}
   </div>
 </div>
 
@@ -66,7 +71,13 @@ Use the SVG sprite to insert any icon through the `<use>` element. Use the icon'
 {{< /md >}}
   </div>
   <div class="col-md-8">
-{{< example >}}
+
+<div class="bd-example" style="font-size: 32px;">
+  <i class="bi bi-heart-fill"></i>
+  <i class="bi bi-toggles"></i>
+  <i class="bi bi-shop"></i>
+</div>
+{{< highlight html >}}
 <svg class="bi" width="32" height="32" fill="currentColor">
   <use xlink:href="bootstrap-icons.svg#heart-fill"/>
 </svg>
@@ -76,7 +87,7 @@ Use the SVG sprite to insert any icon through the `<use>` element. Use the icon'
 <svg class="bi" width="32" height="32" fill="currentColor">
   <use xlink:href="bootstrap-icons.svg#shop"/>
 </svg>
-{{< /example >}}
+{{< /highlight >}}
   </div>
 </div>
 
@@ -88,7 +99,7 @@ Copy the Bootstrap Icons SVGs to your directory of choice and reference them lik
 {{< /md >}}
   </div>
   <div class="col-md-8">
-    {{< example >}}<img src="/assets/img/bootstrap.svg" alt="Bootstrap" width="32" height="32">{{< /example >}}
+    {{< example >}}<img src="/assets/icons/bootstrap.svg" alt="Bootstrap" width="32" height="32">{{< /example >}}
   </div>
 </div>
 
@@ -102,8 +113,8 @@ Use `font-size` and `color` to change the icon appearance.
 {{< /md >}}
   </div>
   <div class="col-md-8">
-    {{< example >}}<i class="bi-alarm"></i>{{< /example >}}
-    {{< example >}}<i class="bi-alarm" style="font-size: 2rem; color: cornflowerblue;"></i>{{< /example >}}
+    {{< example >}}<i class="bi bi-alarm"></i>{{< /example >}}
+    {{< example >}}<i class="bi bi-alarm" style="font-size: 2rem; color: cornflowerblue;"></i>{{< /example >}}
   </div>
 </div>
 
@@ -162,22 +173,15 @@ For purely decorative icons, add `aria-hidden="true"`. Otherwise, provide an app
   </div>
   <div class="col-md-8">
     <div class="bd-example">
-      <img src="/assets/img/bootstrap.svg" alt="Bootstrap" width="32" height="32">
+      <img src="/assets/icons/bootstrap.svg" alt="Bootstrap" width="32" height="32">
     </div>
 {{< highlight html >}}
 <!-- alt="..." on <img> element -->
-<img src="/assets/img/bootstrap.svg" alt="Bootstrap" ...>
+<img src="/assets/icons/bootstrap.svg" alt="Bootstrap" ...>
 {{< /highlight >}}
     <div class="bd-example">
       <i class="bi-github" role="img" style="font-size: 2em" aria-label="GitHub"></i>
-    </div>
-{{< highlight html >}}
-<i class="bi-github" role="img" aria-label="GitHub"></i>
-{{< /highlight >}}
-    <div class="bd-example">
-      <svg class="bi" width="32" height="32" fill="currentColor" role="img" aria-label="Tools">
-        <use xlink:href="bootstrap-icons.svg#tools"/>
-      </svg>
+      <i class="bi-tools" role="img" style="font-size: 2em" aria-label="Tools"></i>
     </div>
 {{< highlight html >}}
 <svg class="bi" ... role="img" aria-label="Tools">
@@ -213,7 +217,7 @@ Known issues include:
 
 - **SVGs receive focus by default in Internet Explorer and Edge Legacy.** When embedding your SVGs, add `focusable="false"` to the `<svg>` element. [Learn more on Stack Overflow.](https://stackoverflow.com/questions/18646111/disable-onfocus-event-for-svg-element)
 
-- **When using SVGs with `<img>` elements, screen readers may not announce them as images, or skip the image completely.** Include an additional `role="img"` on the `<img>` element to avoid any issues. [See this article for details.](https://simplyaccessible.com/article/7-solutions-svgs/#acc-heading-2)
+- **When using SVGs with `<img>` elements, screen readers may not announce them as images, or skip the image completely.** Include an additional `role="img"` on the `<img>` element to avoid any issues. [See this article for details.](https://web.archive.org/web/20201112013541/https://simplyaccessible.com/article/7-solutions-svgs/#acc-heading-2)
 
 - **External SVG sprites may not function correctly in Internet Explorer.** Use the [svg4everybody](https://github.com/jonathantneal/svg4everybody) polyfill as needed.
 
